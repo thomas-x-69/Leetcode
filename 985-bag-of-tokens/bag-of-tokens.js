@@ -16,15 +16,11 @@ var bagOfTokensScore = function(tokens, power) {
             i++
             score++
             max = Math.max(max,score)
-            console.log("face UP")
         }else if(score>0)
         {
             power+=tokens[right]
             score--
             right--
-
-            console.log("face down")
-
         }else
         {
             break
