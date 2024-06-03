@@ -5,7 +5,7 @@
  */
 var orderlyQueue = function(s, k) {
     let res = s
-    	if (k === 1) {
+    	if (k == 1) {
 		let len = s.length;
 		for (i=0; i<len; i++) {
 			let c = s[0];
