@@ -3,17 +3,20 @@
  * @return {number[]}
  */
 var canSeePersonsCount = function(heights) {
-      let res = Array(heights.length).fill(0);
-      let stack = []
-   for (i = 0; i < heights.length; i++) {
-         let height = heights[i];
-         while (stack.length && heights[stack[stack.length - 1]] <= height) {
-            res[stack.pop()] += 1;
-         }
-         if (stack.length) {
-            res[stack[stack.length - 1]] += 1;
-         }
-         stack.push(i);
-      }
-      return res;
+  let res = new Array(heights.length);
+  let stack = [];
+  for (i=heights.length-1; i>=0; i--) {
+
+    let c= 0;
+
+    while (stack.length&&stack[stack.length-1]<heights[i]) {
+      c++;
+      stack.pop();
+    }
+
+    if (stack.length) c++;
+    stack.push(heights[i]);
+    res[i]= c;
+  }
+  return res;
 };
