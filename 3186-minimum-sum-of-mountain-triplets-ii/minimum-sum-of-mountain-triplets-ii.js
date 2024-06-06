@@ -3,7 +3,7 @@
  * @return {number}
  */
 var minimumSum = function(nums) {
-      const n = nums.length
+    let n = nums.length
     let ans = Infinity
 
     let minI = Array(n).fill(nums[0])
