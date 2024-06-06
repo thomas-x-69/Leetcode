@@ -3,31 +3,31 @@
  * @param {number} k
  * @return {boolean}
  */
-var isPossibleDivide = function(hand, groupSize) {
-     if (hand.length % groupSize != 0) {
+var isPossibleDivide = function(nums, k) {
+     if (nums.length % k != 0) {
     return false;
     }
     let countMap = new Map();
 
-  for (let card of hand) {
-    countMap.set(card, (countMap.get(card) || 0) + 1);
+  for (let num of nums) {
+    countMap.set(num, (countMap.get(num) || 0) + 1);
   }
 
-  hand.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b);
 
-    for (let card of hand) {
-    if (countMap.get(card) == 0) {
+    for (let num of nums) {
+    if (countMap.get(num) == 0) {
       continue;
     }
 
-    for (i = 0; i < groupSize; i++) {
-    let currCard = card + i;
+    for (i = 0; i < k; i++) {
+    let currNum = num + i;
 
-      if (countMap.get(currCard) == undefined || countMap.get(currCard) == 0) {
+      if (countMap.get(currNum) == undefined || countMap.get(currNum) == 0) {
         return false;
       }
 
-      countMap.set(currCard, countMap.get(currCard) - 1);
+      countMap.set(currNum, countMap.get(currNum) - 1);
     }}
     return true
 };
