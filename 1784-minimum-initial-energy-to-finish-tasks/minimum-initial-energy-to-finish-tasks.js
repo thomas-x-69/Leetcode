@@ -10,9 +10,9 @@ var minimumEffort = function(tasks) {
     for(let [lost,min] of tasks)
     {
     if (min > curr) {
-            res += (min - curr)
-            curr = min;
-        }
+        res += (min - curr)
+        curr = min;
+    }
     curr -= lost;
 
     }
