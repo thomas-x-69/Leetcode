@@ -9,7 +9,7 @@ var isRationalEqual = function(s, t) {
         let newer = v.split('(')[1] && v.split('(')[1].split(')')[0] || '0';
 
         start = start.includes('.') ? start : start + '.'
-        newer = newer.padEnd(20, newer)
+        newer = newer.padEnd(17, newer)
 
         return parseFloat(start + newer)
         }
