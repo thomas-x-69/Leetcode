@@ -5,7 +5,7 @@
 var longestNiceSubarray = function(nums) {
    let max = 1, j = 0;
 
-    for (let i = 1; i < nums.length; i++) {
+    for (i = 1; i < nums.length; i++) {
 
         let k = j;
         while (k < i && !(nums[i] & nums[k])) k++;
