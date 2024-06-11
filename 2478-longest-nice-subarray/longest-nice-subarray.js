@@ -14,7 +14,7 @@ var longestNiceSubarray = function(nums) {
             max = Math.max(max, i - j + 1);
         }
         else {
-            while (k < i && (nums[i] & nums[k]) !== 0)
+            while (k < i && (nums[i] & nums[k]) != 0)
                 k++;
             j = k;
         }
