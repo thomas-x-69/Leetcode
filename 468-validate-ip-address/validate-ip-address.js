@@ -10,7 +10,7 @@ var validIPAddress = function(queryIP) {
 		for (const str of address) {
 			const ip = parseInt(str);
 			if (ip < 0 || ip > 255) return null;
-			if (ip.toString() !== str) return null;
+			if (ip.toString() != str) return null;
 		}
 		return 'IPv4';
 	};
