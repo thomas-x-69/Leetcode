@@ -3,39 +3,32 @@
  * @return {number}
  */
 var totalFruit = function(fruits) {
-  const K = 2;
+        let max = 0;
 
-  if (!fruits || !fruits.length) return 0;
-  if (fruits.length < K) return fruits.length;
-
-  let total = 0;
-  let currentWindow = 0;
-
-  let basket = new Map();
-
-  let left = 0;
-  let right = 0;
-
-  while (right < fruits.length) {
-    basket.set(
-      fruits[right],
-      basket.get(fruits[right]) ? basket.get(fruits[right]) + 1 : 1
-    );
-    currentWindow++;
-
-    while (basket.size > K) {
-      let fruit = fruits[left];
-      let reducedAmount = basket.get(fruit) - 1;
-
-      if (reducedAmount == 0) basket.delete(fruit);
-      else basket.set(fruit, reducedAmount);
-
-      currentWindow--;
-      left++;
+    let map = new Map();
+    let count = 0, obj = {}, end = 0, total = 0, lastElement, initialElement;
+    while (end < fruits.length) {
+        if (map.get(fruits[end]) >= 0) {
+            if (fruits[end] !== lastElement) {
+                map.set(fruits[end], end);
+                initialElement = lastElement;
+                lastElement = fruits[end];
+            }
+        } else {
+            if (count == 2) {
+                max = Math.max(max, total);
+                map.delete(initialElement);
+                total = end - map.get(lastElement);
+            } else {
+                count++;
+            }
+            initialElement = lastElement;
+            lastElement = fruits[end];
+            map.set(fruits[end], end);
+        }
+        total++;
+        end++;
     }
-    total = Math.max(currentWindow, total);
-    right++;
-  }
-
-  return total;
+    max = Math.max(max, total)
+    return max;
 };
