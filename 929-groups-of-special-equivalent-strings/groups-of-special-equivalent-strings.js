@@ -14,5 +14,4 @@ function transform(s){
     even.sort();
     odd.sort();
     return `${even.join('')}${odd.join('')}`;
-
 };
