@@ -9,8 +9,8 @@ var numSpecialEquivGroups = function(words) {
 };
 
 function transform(s){
-    let even = s.split('').filter((_, i) => i % 2 === 0);
-    let odd = s.split('').filter((_, i) => i % 2 === 1);
+    let even = s.split('').filter((_, i) => i % 2 == 0);
+    let odd = s.split('').filter((_, i) => i % 2 == 1);
     even.sort();
     odd.sort();
     return `${even.join('')}${odd.join('')}`;
