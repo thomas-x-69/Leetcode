@@ -1,14 +1,4 @@
 # Write your MySQL query statement below
-select 
-    queue1.person_name
-from 
-    queue queue1 join queue queue2
-on 
-    queue1.turn >= queue2.turn
-group by 
-    queue1.turn
-having 
-    sum(queue2.weight) <= 1000
-order by 
-    sum(queue2.weight) desc
-limit 1;
+SELECT person_name from (SELECT person_name,turn,
+sum(weight) over (order by turn) AS cum FROM queue) p1
+where cum<=1000 order by turn DESC limit 1;
