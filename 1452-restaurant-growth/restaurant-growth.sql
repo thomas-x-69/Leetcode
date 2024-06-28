@@ -5,4 +5,4 @@ round(avg(sum(amount)) OVER (rows between 6 preceding and current row),2) AS ave
 from Customer
 group by visited_on
 order by visited_on 
-limit 99999 offset 6;
+limit 9999 offset 6;
