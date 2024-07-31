@@ -13,11 +13,12 @@ var numberOfBoomerangs = function(points) {
                 let distance = DistanceCalculator(points[i], points[j]);
                 map.set(distance, (map.get(distance) || 0) + 1);
             }
-        }
-    for (let value of map.values()) {
+        } 
+        for (let value of map.values()) {
             count += value * (value - 1); 
         }
     }
+   
     
     return count;
 
