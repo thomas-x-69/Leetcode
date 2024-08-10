@@ -10,7 +10,6 @@ var minDeletions = function(s) {
         freq[str]?freq[str]++:freq[str]=1
     }
     let arr = Object.values(freq).sort((a,b)=>b-a)
-    console.log(arr)
     for(i=1;i<arr.length;i++)
     {
      if(arr[i]==arr[i-1]&&arr[i]!=0)
