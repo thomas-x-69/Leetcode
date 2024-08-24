@@ -2,26 +2,35 @@
  * @param {string} n
  * @return {string}
  */
-var nearestPalindromic = function (n) {
-    let bit = BigInt(n);
-    let num = [bit - 1n, bit + 1n];
-    while (true) {
-        let d1 = distance(num[0]);
-        if (d1 === 0) break;
-        num[0] -= BigInt(d1);
-    }
-    while (true) {
-        let d2 = distance(num[1]);
-        if (d2 === 0) break;
-        num[1] += BigInt(d2);
-    }
-    return bit - num[0] <= num[1] - bit ? String(num[0]) : String(num[1]);
-};
+var nearestPalindromic = function(n) {
+    const length = n.length;
+    const prefix = BigInt(n.slice(0, Math.ceil(length / 2)));
+    const candidates = new Set([
+        (BigInt(10) ** BigInt(length - 1) - BigInt(1)).toString(), // 999...999 (one less digit)
+        (BigInt(10) ** BigInt(length) + BigInt(1)).toString(),     // 100...001 (one more digit)
+    ]);
 
-function distance(n) {
-    let s = n + "", i = 0, j = s.length - 1;
-    while (i < j) {
-        if (s[i++] != s[j--]) return 10 ** (i - 1);
+    for (let i = -1; i <= 1; i++) {
+        const newPrefix = (prefix + BigInt(i)).toString();
+        const candidate = length % 2 === 0
+            ? newPrefix + newPrefix.split('').reverse().join('')
+            : newPrefix + newPrefix.slice(0, -1).split('').reverse().join('');
+        candidates.add(candidate);
     }
-    return 0;
-}
+
+    candidates.delete(n);
+
+    let nearest = null;
+    let minDiff = null;
+    for (let candidate of candidates) {
+        const diff = BigInt(candidate) - BigInt(n);
+        const absDiff = diff < 0 ? -diff : diff;
+
+        if (minDiff === null || absDiff < minDiff || (absDiff === minDiff && BigInt(candidate) < BigInt(nearest))) {
+            minDiff = absDiff;
+            nearest = candidate;
+        }
+    }
+
+    return nearest;
+};
