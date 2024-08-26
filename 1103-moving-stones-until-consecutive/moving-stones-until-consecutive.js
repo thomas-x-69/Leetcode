@@ -16,11 +16,10 @@ var numMovesStones = function(a, b, c) {
        max = 0;
    } else if (dist1 == 0 || dist2 == 0 || dist1 == 1 || dist2 == 1) {
        min = 1;
-       max = dist1 + dist2;
    } else {
        min = 2;
-       max = dist1 + dist2;
    }
+       max = dist1 + dist2;
 
    return [min, max];
 };
