@@ -37,6 +37,5 @@ var maxMoves = function(grid) {
         if (!found) break;
         res = j;
     }
-    
     return res;
 };
