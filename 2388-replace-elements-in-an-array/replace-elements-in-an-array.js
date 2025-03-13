@@ -9,23 +9,11 @@ var arrayChange = function (nums, operations) {
     for (let i = 0; i < nums.length; i++) {
         map.set(nums[i], i);
     }
-    console.log(map)
 
-
-    for (let op of operations) {
-        let key = op[0];
-        let value = op[1];
-        if (map.has(key)) {
-            let idx = map.get(key);
-            map.set(value, idx);
-            map.delete(key);
-        }
-    }
-    for (const [key, idx] of map) {
-        nums[idx] = key;
+    for (const [v1, v2] of operations) {
+        nums[map.get(v1)] = v2;
+        map.set(v2, map.get(v1))
     }
 
     return nums;
-
-
 };
