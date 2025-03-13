@@ -21,7 +21,7 @@ var arrayChange = function (nums, operations) {
             map.delete(key);
         }
     }
-    for (let [key, idx] of map) {
+    for (const [key, idx] of map) {
         nums[idx] = key;
     }
 
