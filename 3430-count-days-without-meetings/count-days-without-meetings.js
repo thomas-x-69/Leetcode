@@ -4,7 +4,7 @@
  * @return {number}
  */
 var countDays = function(days, meetings) {
-        if (meetings.length === 0) return days;
+    if (meetings.length === 0) return days;
 
     let intervals = meetings.sort((a,b)=>a[0]-b[0])
     const result = [intervals[0]];
@@ -19,9 +19,8 @@ var countDays = function(days, meetings) {
       result.push(current);
     }
   }
-  console.log(result)
-    let totalMeetingDays = result.reduce((total, interval) => 
-        total + (interval[1] - interval[0] + 1), 0);
+   let totalMeetingDays = result.reduce((total, interval) => 
+    total + (interval[1] - interval[0] + 1), 0);
     
     return days - totalMeetingDays;
 };
