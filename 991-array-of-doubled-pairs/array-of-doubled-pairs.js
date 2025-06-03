@@ -32,6 +32,7 @@ var canReorderDoubled = function (arr) {
         }
 
     }
-    if (Object.values(map).reduce((a, b) => a + b) > 0) return false
+    let res = Object.values(map).reduce((a, b) => a + b) 
+    if (res > 0) return false
     else return true
 };
