@@ -11,10 +11,7 @@ var peopleIndexes = function (favoriteCompanies) {
     for (let i = 0; i < favoriteCompanies.length; i++) {
         for (let j = 0; j < favoriteCompanies.length; j++) {
             if (i === j) continue;
-
-            const isSubset = [...sets[i]].every(item => sets[j].has(item));
-
-            if (isSubset) {
+            if ([...sets[i]].every(item => sets[j].has(item))) {
                 arr.push(i);
                 break;
             }
