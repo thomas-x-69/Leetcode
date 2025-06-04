@@ -3,18 +3,15 @@
  * @return {number}
  */
 var beautifulSubarrays = function (nums) {
-    let res = 0
-    let map = new Map();
+    const map = new Map();
+    let count = 0;
+    let n = 0;
+
     map.set(0, 1);
-    let xor = 0;
-    for (let no of nums) {
-        xor = xor ^ no;
-        if (map.has(xor)) {
-            res = res + map.get(xor);
-            map.set(xor, map.get(xor) + 1)
-        } else {
-            map.set(xor, 1)
-        }
+    for (let num of nums) {
+        n = n ^ num;
+        if (map.has(n)) count += map.get(n);
+        map.set(n, (map.get(n) || 0) + 1);
     }
-    return res;
+    return count;
 };
