@@ -3,10 +3,8 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-    let left = 0;
-    let right = 1;
     let max_profit = 0;
-    for (letright = 1; right < prices.length; right++) {
+    for (let right = 1,left = 0; right < prices.length; right++) {
         if (prices[left] < prices[right]) {
             let profit = prices[right] - prices[left];
 
