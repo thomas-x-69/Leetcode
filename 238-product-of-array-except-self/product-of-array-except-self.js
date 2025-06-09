@@ -5,9 +5,9 @@
 var productExceptSelf = function (nums) {
     let n = nums.length;
 
-    let result = []
-    let leftProducts = []
-    let rightProducts = []
+    let result = new Array(n);
+    let leftProducts = new Array(n);
+    let rightProducts = new Array(n);
 
     leftProducts[0] = 1;
     for (let i = 1; i < n; i++) {
