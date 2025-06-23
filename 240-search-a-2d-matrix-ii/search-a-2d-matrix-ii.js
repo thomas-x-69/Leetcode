@@ -4,14 +4,22 @@
  * @return {boolean}
  */
 var searchMatrix = function (matrix, target) {
-    let left = 0
-    let right = matrix[0].length - 1
+    var row = 0;
+    var col = matrix[0].length - 1;
 
-    while (left < matrix.length && left >= 0) {
-       if (matrix[left][right] === target) return true;
-        else if (matrix[left][right] > target) right--;
-        else left++;
+    while (row < matrix.length && col >= 0) {
+        var curr = matrix[row][col];
+
+        if (curr === target) {
+            return true;
+        }
+
+        if (curr < target) {
+            row++;
+        } else {
+            col--;
+        }
     }
 
-    return false
+    return false;
 };
