@@ -5,8 +5,8 @@
  */
 var isAnagram = function(s, t) {
      if(s.length !== t.length)return false
-    let arr1 = Array(26).fill(0)
-    let arr2 = Array(26).fill(0)
+    let arr1 = new Array(26).fill(0)
+    let arr2 = new Array(26).fill(0)
 
     for(i=0;i<s.length;i++)
     {
