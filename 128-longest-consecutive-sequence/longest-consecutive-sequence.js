@@ -5,18 +5,19 @@
 var longestConsecutive = function (nums) {
     if (nums.length == 0) return 0
     nums = [...new Set(nums.sort((a, b) => a - b))];
-    console.log(nums)
     let temp = 0
     let res = 0
+    console.log(nums)
     for (i = 1; i < nums.length; i++) {
-        if (nums[i] - nums[i - 1] > 1) {
+        if (nums[i] - 1 == nums[i - 1]) {
+            temp++
+        } else {
+
+            res = Math.max(res, temp)
             temp = 0
         }
-         if (nums[i] - nums[i - 1] == 1) {
-        temp++
-        }
-        temp > res ? res = temp : null
-
     }
+     res = Math.max(res, temp)
+
     return res + 1
 };
