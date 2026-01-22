@@ -1,13 +1,18 @@
 /**
- * @param {number[]} numbers
+ * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(numbers, target) {
-    for(i=0;i<numbers.length-1;i++)
+var twoSum = function(nums, target) {
+    // let map = {}
+    for(i=0; i<nums.length; i++)
     {
-     let num = numbers.indexOf(target-numbers[i],i+1)
-        if(num!=-1)return [i+1,num+1]
-    
+        let complement = target - nums[i]
+   if(nums.includes(complement,i+1))
+   {
+    return [i+1,nums.indexOf(complement,i+1)+1]
+   }
     }
+    
+    
 };
