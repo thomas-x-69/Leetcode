@@ -1,1 +1,1 @@
-<h2>best-time-to-buy-and-sell-stock Notes</h2><hr>[ Time taken: 17 m 39 s ]
+<h2>best-time-to-buy-and-sell-stock Notes</h2><hr>[ Time taken: 7 m 39 s ]
