@@ -15,8 +15,7 @@ var twoSum = function (nums, target) {
 
     //!----- solution 2: optimal -------!
 
-    let l = 0;
-    let r = nums.length-1;
+    let l = 0, r = nums.length-1;
     while (l<r) {
         if(nums[l]+nums[r]==target)
         {
