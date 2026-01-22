@@ -2,47 +2,39 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
-    nums.sort((a, b) => a - b);
-    const n = nums.length;
+var threeSum = function (nums) {
+    nums.sort((a, b) => a - b)
+    let res = []
 
+    for (let i = 0; i < nums.length - 2; i++) {
+        if (i > 0 && nums[i] === nums[i - 1]) continue
 
-    const m = new Map();
-    for (let x of nums) {
-        m.set(x, (m.get(x) || 0) + 1);
-    }
+        let l = i + 1, r = nums.length - 1
 
-    const seen = new Map();
+        while (l < r) {
+            let sum = nums[i] + nums[l] + nums[r]
 
-    for (let i = 0; i < n; i++) {
-        if (i > 0 && nums[i] === nums[i - 1]) continue;
+            if (sum === 0) {
+                res.push([nums[i], nums[l], nums[r]])
 
-        for (let j = i + 1; j < n; j++) {
-            if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+                l++
+                r--
 
-            let val = -(nums[i] + nums[j]);
-            if (!m.has(val)) continue;
+                while (l < r && nums[l] === nums[l - 1]) l++
+                while (l < r && nums[r] === nums[r + 1]) r--
 
-            let needed = 1;
-            if (val === nums[i]) needed++;
-            if (val === nums[j]) needed++;
-
-            if (m.get(val) < needed) continue;
-            let k=[nums[i], nums[j], val]
-            k.sort();
-            const key = JSON.stringify(k);
-            seen.set(key, 0);
+            } else if (sum < 0) {
+                l++
+            } else {
+                r--
+            }
         }
     }
-    let ans=[];
-     for(let keys of seen.keys()){
-        keys=JSON.parse(keys)
-        ans.push(keys);
-    }
-    ans.sort();
-    return ans;
-};
 
+    return res
+
+
+};
 process.on("exit", () => {
     require("fs").writeFileSync("display_runtime.txt", "0");
 });
