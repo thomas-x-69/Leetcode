@@ -2,21 +2,23 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function (s ) {
-    let map = new Set()
-    let max = 0
-    let left = 0
-    for (right = 0; right < s.length; right++) {
+var lengthOfLongestSubstring = function (s) {
+   
+    let freq = {}
+    let l = 0
+    let res = 0
+    for (let r = 0; r < s.length; r++) {
 
-
-        while (map.has(s[right])) {
-            map.delete(s[left]);  
-            left++;
-        }
-        map.add(s[right])
-
-        max = Math.max(max,right- left +1)
+        if (!freq[s[r]]) {
+            freq[s[r]] = 1
+            
+        } else {
+          
+                delete freq[s[l]]
+                l++
+                r--
+            }
+         res = Math.max(res, r-l+1)
     }
-
-    return max
+    return res
 };
