@@ -5,16 +5,14 @@
  */
 var twoSum = function(nums, target) {
     let map = {};
-    let n = nums.length;
-  for(i=0;i<nums.length;i++)
+    for(i=0;i<nums.length;i++)
     {
-    const complement = target - nums[i]
-    if( complement in map)
-    {
-        return [map[complement],i]
-    }map[nums[i]] = i
+        let complement = target - nums[i]
+        if(complement in map)
+        {
+            return [map[complement],i]
+        }
+        map[nums[i]] = i
     }
-     
-     return [];
-    
+
 };
