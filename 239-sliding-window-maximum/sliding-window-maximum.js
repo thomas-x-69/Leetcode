@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var maxSlidingWindow = function (nums, k) {
-   let res = [];
+    let res = [];
     let arr = [];
 
     for (let i = 0; i < nums.length; i++) {
@@ -24,4 +24,5 @@ var maxSlidingWindow = function (nums, k) {
     }
 
     return res;    
+
 };
