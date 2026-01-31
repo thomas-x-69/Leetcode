@@ -9,14 +9,14 @@ var maxSlidingWindow = function (nums, k) {
 
     for (let i = 0; i < nums.length; i++) {
 
+        if (i >= k && nums[i - k] === arr[0]) {
+            arr.shift();
+        }
+
         while (arr.length && arr[arr.length - 1] < nums[i]) {
             arr.pop();
         }
         arr.push(nums[i]);
-
-        if (i >= k && nums[i - k] === arr[0]) {
-            arr.shift();
-        }
 
         if (i >= k - 1) {
             res.push(arr[0]);
