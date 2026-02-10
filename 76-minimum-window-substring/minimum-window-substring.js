@@ -4,7 +4,6 @@
  * @return {string}
  */
 var minWindow = function (s, t) {
-    // the trick is how can we check for the array if filled or not
     if (t.length > s.length) return ""
 
     let map = {}
@@ -13,15 +12,16 @@ var minWindow = function (s, t) {
     }
     let l = 0, r = 0;
     let len = t.length
-    let minLen = ""
+    let minStart = 0, minLength = Infinity;
     while (r < s.length) {
 
         if (map[s[r]] > 0) len--;
         map[s[r]]--;
         while (len === 0) {
 
-            if (minLen === "" || r - l + 1 < minLen.length) {
-                minLen = s.slice(l, r + 1);
+           if (r - l + 1 < minLength) { 
+                minLength = r - l + 1;
+                minStart = l;
             }
 
             map[s[l]]++;
@@ -32,7 +32,7 @@ var minWindow = function (s, t) {
         r++;
 
     }
-    return minLen || ""
+return minLength === Infinity ? "" : s.slice(minStart, minStart + minLength);
 
 
 };
