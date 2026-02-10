@@ -2,20 +2,20 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function (s) {
-    let stack = []
-    for (let c of s) {
-        if (c == '(' || c == '[' || c == '{') {
-            stack.push(c);
-        } else {
-            if (stack.length==0) return false;
-        let top = stack.pop();
-            if ((c == ')' && top != '(') ||
-                (c == ']' && top != '[') ||
-                (c == '}' && top != '{')) {
-                return false;
-            }
+var isValid = function(s) {
+    let res = []
+    for(let i=0;i<s.length;i++)
+    {
+        if((s[i]==")")&&res[res.length-1]=="("
+        ||(s[i]=="]")&&res[res.length-1]=="["
+        ||(s[i]=="}")&&res[res.length-1]=="{"
+        )
+        {
+            res.pop()
+        }else{
+            res.push(s[i])
         }
     }
-    return stack.length==0
+
+    return res.length==0
 };
