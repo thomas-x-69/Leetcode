@@ -4,18 +4,19 @@
  * @param {number[]} speed
  * @return {number}
  */
-var carFleet = function (target, position, speed) {
-    const cars = position.map((pos, i) => [pos, speed[i]])
-        .sort((a, b) => b[0] - a[0]);
+var carFleet = function(target, position, speed) {
+    // (target - position[0])/position[1]
+    const cars = position.map((pos, i) => [pos, speed[i]]);
+    let time = cars.sort((a, b) => b[0] - a[0]).map((a)=>(target - a[0])/a[1])
+    // console.log(time)
+    let res = [time[0]]
+    // in the loop if current is bigger than the last char in the array then push to the result
+    for(i=1;i<time.length;i++)
+    {
+        if(time[i]>res[res.length-1]) res.push(time[i])
 
-    const stack = [];
-    for (const [pos, spd] of cars) {
-        const time = (target - pos) / spd;
-
-        if (stack.length === 0 || time > stack[stack.length - 1]) {
-            stack.push(time);
-        }
     }
-
-    return stack.length;
+    // console.log(res)
+    // at the
+    return res.length
 };
